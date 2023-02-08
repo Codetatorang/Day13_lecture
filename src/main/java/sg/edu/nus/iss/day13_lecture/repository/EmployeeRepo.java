@@ -20,13 +20,15 @@ public class EmployeeRepo {
             employees = new ArrayList<Employee>();
         }
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        Date dt = df.parse("1993-02-16");
-        Employee em = new Employee("vincent","ang","vinceajy93@gmail.com","98616608",999,dt,"farrer park 31", 271024);
+        Date dt = df.parse("1973-04-26");
+        Employee em = new Employee("vincent","ang","vinceajy93@gmail.com","98616608",9199,dt,"farrer park 31", 271024);
         employees.add(em);
 
+        dt = df.parse("1993-04-26");
         em = new Employee("Wolonglong","Young","Younglong21@gmail.com","9724212",9992,dt,"Suntec Tower 2", 436322);
         employees.add(em);
 
+        dt = df.parse("1973-04-26");
         em = new Employee("Pixel","Biang","BiangXpixel@gmail.com","8823642",9919,dt,"Hougang Mall", 52421);
         employees.add(em);
 
@@ -34,7 +36,7 @@ public class EmployeeRepo {
     public List<Employee> findAll(){
         return employees;
     }
-
+    
     public Boolean save(Employee employee){
         Boolean result = employees.add(employee);
         return result;
@@ -49,5 +51,21 @@ public class EmployeeRepo {
         }
 
         return result;
+    }
+
+    public Boolean update(Employee em){
+        Employee emp = employees.stream().filter(e->e.getEmail().equals(em.getEmail())).findFirst().get();
+
+        int empIndex = employees.indexOf(emp);
+        if(empIndex >= 0){
+            employees.remove(empIndex);
+        }
+        employees.add(em);
+        return true;
+    }
+
+    public Employee findByEmailId(String email){
+        Employee emp = employees.stream().filter(e->e.getEmail().equals(email)).findFirst().get();
+        return emp;
     }
 }

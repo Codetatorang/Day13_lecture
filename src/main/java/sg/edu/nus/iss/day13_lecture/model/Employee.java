@@ -10,6 +10,7 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -25,7 +26,7 @@ public class Employee {
 
     @Email(message = "Invalid Email Format")
     @Size(max = 120)
-    @Pattern(regexp = ".@.\\..+", message = "Wrong email format.")
+    @Pattern(regexp = ".+@.+\\..+", message = "Wrong email format.")
     @NotBlank(message = "Email is a mandatory field")
     private String email;
 
@@ -37,11 +38,12 @@ public class Employee {
     private Integer salary;
 
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    @PastOrPresent(message="Birth date cannot be greate than today.")
+    @PastOrPresent(message="Birth date cannot be greater than today.")
     private Date birthDay;
 
     private String address;
     
+    @NotNull(message="Cannot be empty")
     @Digits(fraction=0,integer=6,message="Postal code format, i.e 123456")
     private Integer postalCode;
 

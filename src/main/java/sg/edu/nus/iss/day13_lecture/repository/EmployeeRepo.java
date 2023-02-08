@@ -46,17 +46,18 @@ public class EmployeeRepo {
         return employees;
     }
     
-    public Boolean save(Employee employee) throws FileNotFoundException{
+    public Boolean add(Employee employee){
         Boolean result = employees.add(employee);
+        return result;
+    }
 
+    public void save() throws FileNotFoundException{
         File f = new File(dirPath + File.separator + fileName);
-        System.out.println(f.toString());
-        OutputStream os = new FileOutputStream(f, true);
+        OutputStream os = new FileOutputStream(f);
         PrintWriter pw = new PrintWriter(os);
-        pw.println(employee.toString());
+        pw.println(employees.toString());
         pw.flush();
         pw.close();
-        return result;
     }
 
     public Boolean delete(Employee employee){

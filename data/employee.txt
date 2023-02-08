@@ -1,1 +1,1 @@
-Employee [firstName=vincent, lastName=elina, email=vincdevlife@gmail.com, phoneNum=98761232, salary=3454, birthDay=Wed Jan 13 00:00:00 SGT 1993, address=Parkkor avenue 23, postalCode=560134]
+[Employee [firstName=vincent, lastName=ang, email=vinceajy93@gmail.com, phoneNum=98616608, salary=9199, birthDay=Thu Apr 26 00:00:00 SGT 1973, address=farrer park 31, postalCode=271024], Employee [firstName=Pixel, lastName=Biang, email=BiangXpixel@gmail.com, phoneNum=8823642, salary=9919, birthDay=Thu Apr 26 00:00:00 SGT 1973, address=Hougang Mall, postalCode=52421]]

@@ -41,15 +41,16 @@ public class EmployeeController {
             return "employeeadd";
         }
         Boolean bRes = false;
-        bRes = empRepo.save(employeeForm);
+        bRes = empRepo.add(employeeForm);
+        empRepo.save();
         return "redirect:/employees/home";
     }
 
     @GetMapping("/deleteEmployee/{email}")
-    public String deleteEmployee(@PathVariable("email") String email){
+    public String deleteEmployee(@PathVariable("email") String email)throws FileNotFoundException{
         Employee emp = empRepo.findByEmailId(email);
         Boolean bRes = empRepo.delete(emp);
-        
+        empRepo.save();
         return "redirect:/employees/home";
     }
 
@@ -63,11 +64,12 @@ public class EmployeeController {
     }
 
     @PostMapping("/updateEmp")
-    public String updateEmployeeProcess(@ModelAttribute("employee") Employee emp, BindingResult result, Model model){
+    public String updateEmployeeProcess(@ModelAttribute("employee") Employee emp, BindingResult result, Model model)throws FileNotFoundException{
         if(result.hasErrors()){
             return "employeeupdate";
         }
         empRepo.update(emp);
+        empRepo.save();
         return "redirect:/employees/home";
     }
 }

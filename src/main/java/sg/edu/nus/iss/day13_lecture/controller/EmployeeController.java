@@ -1,5 +1,6 @@
 package sg.edu.nus.iss.day13_lecture.controller;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/addnew")
-    public String addEmployee(@Valid  @ModelAttribute("employee")Employee employeeForm, BindingResult result, Model model){
+    public String addEmployee(@Valid  @ModelAttribute("employee")Employee employeeForm, BindingResult result, Model model)throws FileNotFoundException{
         if(result.hasErrors()){
             return "employeeadd";
         }

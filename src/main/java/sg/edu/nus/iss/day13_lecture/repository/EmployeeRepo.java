@@ -1,5 +1,10 @@
 package sg.edu.nus.iss.day13_lecture.repository;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,6 +18,10 @@ import sg.edu.nus.iss.day13_lecture.model.Employee;
 
 @Repository
 public class EmployeeRepo {
+    //directory path
+    final String dirPath = System.getProperty("user.home");
+    final String fileName = "employee.txt";
+
     private List<Employee> employees;
     
     public EmployeeRepo() throws ParseException{
@@ -37,8 +46,15 @@ public class EmployeeRepo {
         return employees;
     }
     
-    public Boolean save(Employee employee){
+    public Boolean save(Employee employee) throws FileNotFoundException{
         Boolean result = employees.add(employee);
+
+        File f = new File(dirPath + File.separator + fileName);
+        OutputStream os = new FileOutputStream(f);
+        PrintWriter pw = new PrintWriter(os);
+        pw.println(employee.toString());
+        pw.flush();
+        pw.close();
         return result;
     }
 

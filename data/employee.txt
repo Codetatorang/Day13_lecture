@@ -1,0 +1,1 @@
+Employee [firstName=vincent, lastName=elina, email=vincdevlife@gmail.com, phoneNum=98761232, salary=3454, birthDay=Wed Jan 13 00:00:00 SGT 1993, address=Parkkor avenue 23, postalCode=560134]

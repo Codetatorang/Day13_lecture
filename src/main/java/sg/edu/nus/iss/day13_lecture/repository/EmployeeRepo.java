@@ -13,13 +13,12 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
-
 import sg.edu.nus.iss.day13_lecture.model.Employee;
 
 @Repository
 public class EmployeeRepo {
     //directory path
-    final String dirPath = System.getProperty("user.home");
+    final String dirPath = System.getProperty("user.dir") + File.separator + "data";
     final String fileName = "employee.txt";
 
     private List<Employee> employees;
@@ -42,6 +41,7 @@ public class EmployeeRepo {
         employees.add(em);
 
     }
+    
     public List<Employee> findAll(){
         return employees;
     }
@@ -50,7 +50,8 @@ public class EmployeeRepo {
         Boolean result = employees.add(employee);
 
         File f = new File(dirPath + File.separator + fileName);
-        OutputStream os = new FileOutputStream(f);
+        System.out.println(f.toString());
+        OutputStream os = new FileOutputStream(f, true);
         PrintWriter pw = new PrintWriter(os);
         pw.println(employee.toString());
         pw.flush();
